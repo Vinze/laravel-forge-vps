@@ -8,7 +8,7 @@
     <title>Forge test app</title>
 </head>
 <body>
-    <div class="h-screen w-screen flex justify-center items-center bg-gradient-to-tr from-orange-400 to-sky-600">
+    <div class="h-screen w-screen flex justify-center items-center bg-gradient-to-tr from-pink-400 to-sky-600">
         <h1 class="font-bold text-white text-2xl md:text-5xl xl:text-7xl">Hello from Laravel Forge 😁</h1>
     </div>
 </body>
