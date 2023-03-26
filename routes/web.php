@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Todo;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $todos = Todo::latest()->get();
+
+    return view('todos', compact('todos'));
 });
 
-Route::post('todo', function(Request $request) {
-    return $request->input('description');
+Route::post('todos/new', function(Request $request) {
+    $request->validate([
+        'description' => 'required'
+    ]);
+
+    Todo::create([
+        'description' => $request->input('description')
+    ]);
+
+    return back();
+});
+
+Route::post('todos/delete/{todo}', function(Request $request, Todo $todo) {
+    $todo->delete();
+
+    return back();
 });
